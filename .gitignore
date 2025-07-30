@@ -1,0 +1,14 @@
+# Ignore training scripts
+train_*.py
+
+# Ignore datasets
+*.csv
+*.sql
+
+# Ignore backup or unused models
+gender_model.pkl
+vectorizer.pkl
+
+# Bytecode and cache
+__pycache__/
+*.pyc
