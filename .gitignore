@@ -4,6 +4,7 @@ train_*.py
 # Ignore datasets
 *.csv
 *.sql
+.env
 
 # Ignore backup or unused models
 gender_model.pkl
