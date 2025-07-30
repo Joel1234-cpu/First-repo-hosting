@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import pickle
 import mysql.connector
+import os  # Import the os module
 
 app = Flask(__name__)
 
@@ -45,11 +46,20 @@ def predict():
         confidence = round(max(proba) * 100, 2)
 
     try:
+        # Use environment variables for database credentials
+        db_host = os.environ.get('DB_HOST', 'localhost')  # Default to localhost if not set
+        db_user = os.environ.get('DB_USER', 'root')       # Default to root if not set
+        db_password = os.environ.get('DB_PASSWORD')       # Ensure this is set in your environment
+        db_name = os.environ.get('DB_NAME', 'Gender_Prediction') # Default to Gender_Prediction if not set
+
+        if not db_password:
+            raise ValueError("Database password not found in environment variables.")
+
         conn = mysql.connector.connect(
-            host='localhost',
-            user='root',
-            password='W7301@jqir#',
-            database='Gender_Prediction'
+            host=db_host,
+            user=db_user,
+            password=db_password,
+            database=db_name
         )
         cursor = conn.cursor()
 
