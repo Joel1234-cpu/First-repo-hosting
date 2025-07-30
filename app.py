@@ -79,6 +79,16 @@ def predict():
                 """)
                 conn.commit()
 
+        # Ensure native Python types before MySQL insert
+        name = str(name)
+        prediction = str(prediction)
+        confidence = float(confidence)
+
+
+
+
+
+
         # Insert prediction with confidence
         sql = "INSERT INTO predictions (name, predicted_gender, confidence) VALUES (%s, %s, %s)"
         cursor.execute(sql, (name, prediction, confidence))
