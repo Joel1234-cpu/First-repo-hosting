@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gender Predictor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #2c3e50, #3498db);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      width: 250px;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background-color: #27ae60;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2ecc71;
+    }
+
+    h3 {
+      margin-top: 15px;
+      font-weight: 400;
+      color: #ecf0f1;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      border-radius: 10px;
+      width: fit-content;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+
+      input[type="text"], button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>🔍 Gender Predictor</h2>
+  <form action="/predict" method="post">
+    <input type="text" name="name" placeholder="Enter a name" required>
+    <button type="submit">Predict</button>
+  </form>
+
+  {% if error %}
+    <h3 style="color: #e74c3c;">❌ {{ error }}</h3>
+  {% elif name %}
+    <h3>👤 Name: {{ name.title() }}</h3>
+    <h3>⚧️ Gender: {{ gender }}</h3>
+    <h3>📊 Confidence: {{ confidence }}%</h3>
+  {% endif %}
+</body>
+</html>
