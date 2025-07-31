@@ -10,6 +10,7 @@ ENV = os.getenv("ENV", "local")
 
 app = Flask(__name__)
 
+
 # 🧠 Choose the database based on environment
 if ENV == "production":
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("RAILWAY_DB_URL")
