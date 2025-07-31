@@ -78,10 +78,17 @@
 </head>
 <body>
   <h2>🔍 Gender Predictor</h2>
+
   <form action="/predict" method="post">
     <input type="text" name="name" placeholder="Enter a name" required>
     <button type="submit">Predict</button>
   </form>
+
+  {% if error %}
+    <h3 style="color: red; background-color: rgba(255, 255, 255, 0.2);">
+      {{ error }}
+    </h3>
+  {% endif %}
 
   {% if name %}
     <h3>👤 Name: {{ name.title() }}</h3>
