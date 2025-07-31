@@ -3,3 +3,4 @@ scikit-learn==1.5.0
 mysql-connector-python==8.4.0
 gunicorn
 flask_sqlalchemy
+python-dotenv
