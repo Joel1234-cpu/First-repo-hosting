@@ -2,7 +2,7 @@
 train_*.py
 
 # Ignore datasets
-#*.csv
+
 #*.sql
 #.env
 
