@@ -7,15 +7,22 @@ import pickle
 
 # Load and clean dataset
 data = pd.read_csv('names_dataset.csv')
+
+# ✅ Normalize column headers
 data.columns = [col.strip().lower() for col in data.columns]
 
-# Normalize values
+# ✅ Remove missing rows
+data.dropna(subset=['name', 'gender'], inplace=True)
+
+# Normalize gender values
 data['gender'] = data['gender'].astype(str).str.strip().str.lower()
 data['gender'] = data['gender'].map({
     'm': 'male', 'male': 'male', '1': 'male', 'boy': 'male',
     'f': 'female', 'female': 'female', '0': 'female', 'girl': 'female'
 })
-data.dropna(subset=['Name', 'Gender'], inplace=True)
+
+# Drop rows with unmapped gender
+data.dropna(subset=['gender'], inplace=True)
 
 print(f"✅ Cleaned dataset size: {len(data)}")
 print("✅ Gender values:", data['gender'].unique())

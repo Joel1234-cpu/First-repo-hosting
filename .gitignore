@@ -2,13 +2,13 @@
 train_*.py
 
 # Ignore datasets
-
-#*.sql
-#.env
+.csv
+*.sql
+.env
 
 # Ignore backup or unused models
-#gender_model.pkl
-#vectorizer.pkl
+gender_model.pkl
+vectorizer.pkl
 
 # Bytecode and cache
 __pycache__/
