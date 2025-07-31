@@ -3,7 +3,23 @@ import pickle
 import mysql.connector
 import os
 
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+
+load_dotenv()  # ⬅️ loads .env file
+
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class Prediction(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    predicted_gender = db.Column(db.String(10), nullable=False)
+    confidence = db.Column(db.Float, nullable=False)
+
 
 # 🔄 Load model and vectorizer
 try:
