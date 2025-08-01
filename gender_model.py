@@ -48,3 +48,4 @@ pickle.dump(model, open('gender_model.pkl', 'wb'))
 pickle.dump(vectorizer, open('vectorizer.pkl', 'wb'))
 
 print("\n✅ Model and vectorizer saved successfully!")
+    
