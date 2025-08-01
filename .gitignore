@@ -2,7 +2,7 @@
 train_*.py
 
 # Ignore datasets
-.csv
+names_dataset.csv
 *.sql
 .env
 
@@ -13,3 +13,4 @@ vectorizer.pkl
 # Bytecode and cache
 __pycache__/
 *.pyc
+.env
